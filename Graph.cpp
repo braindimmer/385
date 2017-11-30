@@ -75,6 +75,6 @@ void Graph::PrintGraph(){
 }
 
 AdjListNode * Graph::adjNode(int u){
-    return array[u]->head;
+    return array[u].head;
 }
 

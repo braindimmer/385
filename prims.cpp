@@ -1,4 +1,5 @@
 #include "Graph.h"
+#include <iostream>
 
 struct MinHeapNode{
 	int v;
@@ -41,20 +42,20 @@ void minHeapify(MinHeap * minHeap, int i){
 	right = 2 * i + 2;
 
 	if(left < minHeap->size and
-		 	minHeap->array[left]->cost < minHeap->array[smallest]->cost)
+		 	minHeap->array[left].cost < minHeap->array[smallest].cost)
 		smallest = left;
 	if(right < minHeap->size and 
-			minheap->array[right]->cost < minHeap->array[smallest]->cost)
+			minHeap->array[right].cost < minHeap->array[smallest].cost)
 		smallest = right;
 
 	if(smallest != i){
-		minHeapNode * smallestNode = minHeap->array[smallest];
-		minHeapNode * iNode = minHeap->array[i];
+		MinHeapNode * smallestNode = &minHeap->array[smallest];
+		MinHeapNode * iNode = &minHeap->array[i];
 
 		minHeap->pos[smallestNode->v] = i;
-		minHeap->post[iNode->v] = smallest;
+		minHeap->pos[iNode->v] = smallest;
 
-		swapMinHeapNode(*minHeap->array[smallest], *minHeap->array[i]);
+		swapMinHeapNode(&minHeap->array[smallest], &minHeap->array[i]);
 		minHeapify(minHeap, smallest);
 	}
 }
@@ -67,13 +68,13 @@ struct MinHeapNode * getMin(MinHeap * minHeap){
 	if(isEmpty(minHeap))
 		return NULL;
 
-	struct MinHeapNode * root = minHeap->array[0];
+	struct MinHeapNode * root = &minHeap->array[0];
 
-	struct MinHeapNode * lastNode = minHeap->array[minHeap->size - 1];
-	minHeap->array[0] = lastNode;
+	struct MinHeapNode * lastNode = &minHeap->array[minHeap->size - 1];
+	minHeap->array[0] = *lastNode;
 
 	minHeap->pos[root->v] = minHeap->size - 1;
-	minHeap->post[lastNode->v] = 0;
+	minHeap->pos[lastNode->v] = 0;
 
 	minHeap->size--;
 	minHeapify(minHeap, 0);
@@ -84,12 +85,12 @@ struct MinHeapNode * getMin(MinHeap * minHeap){
 void decreaseKey(MinHeap * minHeap, int v, int cost){
 	int i = minHeap->pos[v];
 
-	minHeap->array[i]->cost = cost;
+	minHeap->array[i].cost = cost;
 
-	while(i and minHeap->array[i]->cost < minHeap->array[(i - 1)/2]->cost){
-		minHeap->pos[minHeap->array[i]->v] = (i - 1) / 2;
-		minHeap->pos[minHeap->array[(i - 1) / 2]->v] = i;
-		swapMinHeapNode(*minHeap->array[i], *minHeap->array[(i - 1) / 2]);
+	while(i and minHeap->array[i].cost < minHeap->array[(i - 1)/2].cost){
+		minHeap->pos[minHeap->array[i].v] = (i - 1) / 2;
+		minHeap->pos[minHeap->array[(i - 1) / 2].v] = i;
+		swapMinHeapNode(&minHeap->array[i], &minHeap->array[(i - 1) / 2]);
 
 		i = (i - 1) / 2;
 	}
@@ -103,7 +104,7 @@ bool isInMinHeap(MinHeap * minHeap, int v){
 
 void printArr(int arr[], int n){
 	for(int i = 1; i < n; i++)
-		cout << arr[i] << " - " << i << endl;
+		std::cout << arr[i] << " - " << i << std::endl;
 }
 
 void prims(Graph graph){
@@ -114,14 +115,14 @@ void prims(Graph graph){
 	MinHeap* minHeap = createMinHeap(size);
 
 	for(int v = 1; v < size; v++){
-		parent[v] = -1;
+		mst[v] = -1;
 		cost[v] = 99999999;
-		minHeap->array[v] = newMinHeapNode(v, cost[v]);
-		minHeap->post[v] = v;
+		minHeap->array[v] = *newMinHeapNode(v, cost[v]);
+		minHeap->pos[v] = v;
 	}
 
 	cost[0] = 0;
-	minHeap->array[0] = newMinHeapNode(0, cost[0]);
+	minHeap->array[0] = *newMinHeapNode(0, cost[0]);
 	minHeap->pos[0] = 0;
 
 	minHeap->size = size;
@@ -130,7 +131,7 @@ void prims(Graph graph){
 		MinHeapNode* minHeapNode = getMin(minHeap);
 		int u = minHeapNode->v;
 
-		Graph::AdjListNode* crawl = graph.adjNode(u);
+		AdjListNode* crawl = graph.adjNode(u);
 		while(crawl!=NULL){
 			int v = crawl->dest;
 
