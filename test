@@ -1,0 +1,132 @@
+Script started on Fri 01 Dec 2017 01:33:55 PM EST
+]777;notify;Command completed;clear]0;h778337d@cslab166:~/CS385/385]7;file://cslab166/home/CS/h778337d/CS385/385|Hunter@cslab166:~/CS385/385| > ./prims.exe
+
+<-- Connected graph for Prims -->
+Adjacency list of vertex 0
+ head-> 7-> 1
+Adjacency list of vertex 1
+ head-> 7-> 2-> 0
+Adjacency list of vertex 2
+ head-> 5-> 8-> 3-> 1
+Adjacency list of vertex 3
+ head-> 5-> 4-> 2
+Adjacency list of vertex 4
+ head-> 5-> 3
+Adjacency list of vertex 5
+ head-> 6-> 4-> 3-> 2
+Adjacency list of vertex 6
+ head-> 8-> 7-> 5
+Adjacency list of vertex 7
+ head-> 8-> 6-> 1-> 0
+Adjacency list of vertex 8
+ head-> 7-> 6-> 2
+
+<-- MST of graph -->
+0 - 1 -> 4
+5 - 2 -> 4
+2 - 3 -> 7
+3 - 4 -> 9
+6 - 5 -> 2
+7 - 6 -> 1
+0 - 7 -> 8
+2 - 8 -> 2
+Total cost: 37
+
+<-- Connected graph2 for Prims -->
+Adjacency list of vertex 0
+ head-> 7-> 1
+Adjacency list of vertex 1
+ head-> 7-> 2-> 0
+Adjacency list of vertex 2
+ head-> 5-> 8-> 3-> 1
+Adjacency list of vertex 3
+ head-> 5-> 4-> 2
+Adjacency list of vertex 4
+ head-> 5-> 3
+Adjacency list of vertex 5
+ head-> 6-> 4-> 3-> 2
+Adjacency list of vertex 6
+ head-> 8-> 7-> 5
+Adjacency list of vertex 7
+ head-> 8-> 6-> 1-> 0
+Adjacency list of vertex 8
+ head-> 7-> 6-> 2
+
+<-- MST of graph with negative weights -->
+0 - 1 -> -4
+8 - 2 -> -2
+5 - 3 -> -14
+3 - 4 -> 9
+6 - 5 -> 2
+8 - 6 -> -6
+0 - 7 -> -8
+7 - 8 -> -7
+Total cost: -30
+]777;notify;Command completed;./prims.exe]0;h778337d@cslab166:~/CS385/385]7;file://cslab166/home/CS/h778337d/CS385/385|Hunter@cslab166:~/CS385/385| > ./krusk.exe
+
+<-- Connected graph for Kruskals -->
+Adjacency list of vertex 0
+ head-> 7-> 1
+Adjacency list of vertex 1
+ head-> 7-> 2-> 0
+Adjacency list of vertex 2
+ head-> 5-> 8-> 3-> 1
+Adjacency list of vertex 3
+ head-> 5-> 4-> 2
+Adjacency list of vertex 4
+ head-> 5-> 3
+Adjacency list of vertex 5
+ head-> 6-> 4-> 3-> 2
+Adjacency list of vertex 6
+ head-> 8-> 7-> 5
+Adjacency list of vertex 7
+ head-> 8-> 6-> 1-> 0
+Adjacency list of vertex 8
+ head-> 7-> 6-> 2
+
+<-- MST of graph -->
+6 - 7 -> 1
+8 - 2 -> 2
+5 - 6 -> 2
+2 - 5 -> 4
+1 - 0 -> 4
+3 - 2 -> 7
+0 - 7 -> 8
+4 - 3 -> 9
+Total cost: 37
+
+ Connected graph2 for Kruskals -->
+Adjacency list of vertex 0
+ head-> 7-> 1
+Adjacency list of vertex 1
+ head-> 7-> 2-> 0
+Adjacency list of vertex 2
+ head-> 5-> 8-> 3-> 1
+Adjacency list of vertex 3
+ head-> 5-> 4-> 2
+Adjacency list of vertex 4
+ head-> 5-> 3
+Adjacency list of vertex 5
+ head-> 6-> 4-> 3-> 2
+Adjacency list of vertex 6
+ head-> 8-> 7-> 5
+Adjacency list of vertex 7
+ head-> 8-> 6-> 1-> 0
+Adjacency list of vertex 8
+ head-> 7-> 6-> 2
+
+<--- MST of graph with negative weights -->
+5 - 3 -> -14
+0 - 7 -> -8
+7 - 8 -> -7
+6 - 8 -> -6
+1 - 0 -> -4
+2 - 8 -> -2
+5 - 6 -> 2
+3 - 4 -> 9
+Total cost: -30
+]777;notify;Command completed;./krusk.exe]0;h778337d@cslab166:~/CS385/385]7;file://cslab166/home/CS/h778337d/CS385/385|Hunter@cslab166:~/CS385/385| > exit script
+exit
+bash: exit: script: numeric argument required
+
+Script done on Fri 01 Dec 2017 01:34:08 PM EST

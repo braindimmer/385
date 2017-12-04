@@ -11,6 +11,7 @@ Graph::Graph(int V){
     array = new AdjList[V];
     for(int i = 0; i < V; i++)
         array[i].head = NULL;
+    edges = 0;
 }
 
 
@@ -30,6 +31,7 @@ void Graph::addEdge(int src, int dest, int weight){
     newNode->next = array[dest].head;
     array[dest].head = newNode;
     edges++;
+    edges++;
 }
 
 int Graph::getEdges(){
@@ -43,9 +45,9 @@ int Graph::getSize(){
 void Graph::Print(){
     for(int i = 0; i < getSize(); i++){
         AdjListNode * ptr = array[i].head;
-        //cout << "Adjacency list of vertex " << getLabel(i) << "\n head";
+        cout << "Adjacency list of vertex " << i << "\n head";
         while(ptr){
-            //cout << "-> " << getLabel(ptr->dest);
+            cout << "-> " << ptr->dest;
             ptr = ptr->next;
         }
     cout << endl;
